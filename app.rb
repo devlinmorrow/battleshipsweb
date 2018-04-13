@@ -7,7 +7,7 @@ end
 
 get "/game/:points" do
   @grid_state = params[:points]
-  @grid_state += "#{params.key(params[:point])}=#{params[:point]}"
+  @grid_state += "#{params[:point]}"
   if @grid_state.include?("01") 
     @point_01 = "O"
   else 
