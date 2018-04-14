@@ -1,8 +1,10 @@
+
 <p>Here's the grid! Please pick a Grid Point from 1-9 :) </p>
 
 <p><%= @grid_points.join %></p>
 
-<form action="/game/<%= @grid_state %>">
+<form>
+  <button type="hidden" name="grid_state" value=<%= @grid_state %>>
   <button type="submit" name="point" value=01>Grid Point One</button> 
   <button type="submit" name="point" value=02>Grid Point Two</button> 
   <button type="submit" name="point" value=03>Grid Point Three</button> 
