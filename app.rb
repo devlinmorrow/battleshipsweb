@@ -5,8 +5,8 @@ get "/" do
   erb :index
 end
 
-get "/game/:points" do
-  @grid_state = params[:points]
+get "/battleships/version1" do
+  @grid_state = params[:grid_state] || ""
   @grid_state += "#{params[:point]}"
   if @grid_state.include?("01") 
     @point_01 = "O"
@@ -54,12 +54,11 @@ get "/game/:points" do
     @point_09 = "X"
   end
   @grid_points = [@point_01, @point_02, @point_03, "<br>", @point_04, @point_05, @point_06, "<br>", @point_07, @point_08, @point_09]
-  erb :game
+  erb :version1
 end
 
-
-get "/game/version2" do
-  @grid_state = params[:grid_state]
+get "/game/:grid" do
+  @grid_state = params[:grid]
   @grid_state += "#{params[:point]}"
   if @grid_state.include?("01") 
     @point_01 = "O"
@@ -107,6 +106,8 @@ get "/game/version2" do
     @point_09 = "X"
   end
   @grid_points = [@point_01, @point_02, @point_03, "<br>", @point_04, @point_05, @point_06, "<br>", @point_07, @point_08, @point_09]
-  erb :version2
+  erb :grid
 end
+
+
 
