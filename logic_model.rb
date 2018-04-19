@@ -7,9 +7,24 @@ class GameLogic
 
   def initialize
     @guesses_left = 20
-    @game_grid = Grid.new
+    @game_grid = create_grid
     @game_boat_list = BoatList.new(create_boat_list)
   end
+
+  def create_grid
+    grid = []
+  grid_points = [@point_01, @point_02, @point_03, "<br>", @point_04, @point_05, @point_06, "<br>", @point_07, @point_08, @point_09]
+  end
+end
+
+def construct_initial_row
+  initial_box_row = ["  "]
+  initial_box_row[0] << ("╔═════╗" * @grid_size) + "\n"
+  @grid_size.times {initial_box_row << "║  ☺  ║"}
+  initial_box_row << "\n  "
+  initial_box_row[@grid_size + 1] << ("╚═════╝" * @grid_size) + "\n"
+  initial_box_row
+end
 
   def create_boat_list
     [@boat_1 = Boat.new([[9,1]]),
@@ -31,10 +46,6 @@ class GameLogic
     else
       lose_message
     end
-  end
-
-  def initial_message
-    @output.puts "Welcome to Battleships! You have #{@guesses_left} guesses to sink #{@game_boat_list.count_boats_not_sunk} boats.\nI will tell you when you have sunk a boat and you won't lose a guess if you hit a boat. Good luck!"
   end
 
   def make_guesses
