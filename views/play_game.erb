@@ -1,10 +1,13 @@
+<%= @hit_message %>
+<%= @boat_sunk_message %>
+<%= @miss_message %>
 
-<p>You have <%= session[:guesses_left]%> guess(es) left to hit <%= session[:boats_left] %> boat(s).</p>
+<p>You have <%= session[:guesses_left]%> guess(es) left to hit <%= session[:boats_not_sunk] %> boat(s).</p>
 
 <p> Here's the grid! </p>
 <%= session[:game_grid].grid.join%>
 
-<p>Please pick a grid point from 1-25 :) </p>
+<p>Please pick a grid number from 1-25 :) </p>
 
 <form>
   <input type="text" name="user_input">
